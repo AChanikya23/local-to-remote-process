@@ -1,0 +1,49 @@
+# Types of Mergers in Git
+
+1. **Fast-Forward Merge**:
+  - Occurs when the branch being merged has not diverged from the branch it is being merged into.
+  - Git simply moves the branch pointer forward.
+
+  ```bash
+  git checkout main
+  git merge feature-branch
+  ```
+
+2. **Three-Way Merge**:
+  - Happens when the branches have diverged.
+  - Git creates a new commit to combine the changes.
+
+  ```bash
+  git checkout main
+  git merge feature-branch
+  ```
+
+3. **Squash Merge**:
+  - Combines all the commits from the feature branch into a single commit on the target branch.
+
+  ```bash
+  git checkout main
+  git merge --squash feature-branch
+  git commit
+  ```
+
+4. **Rebase and Merge**:
+  - Reapplies commits from the feature branch on top of the target branch, creating a linear history.
+
+  ```bash
+  git checkout feature-branch
+  git rebase main
+  git checkout main
+  git merge feature-branch
+  ```
+
+5. **Conflict Merge**:
+  - Occurs when there are conflicting changes in the branches being merged.
+  - Requires manual resolution of conflicts.
+
+  ```bash
+  git merge feature-branch
+  # Resolve conflicts in files
+  git add resolved-file
+  git commit
+  ```
